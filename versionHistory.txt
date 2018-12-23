@@ -1,0 +1,4 @@
+Author: Vedran
+Email: Vedran@hotmail.com
+Created: 2018-12-23
+Version 0.1
