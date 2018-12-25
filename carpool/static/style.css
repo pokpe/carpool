@@ -1,15 +1,44 @@
 body {
-  background: #fafafa;
-  color: #333333;
+  background: #5F636C;
+  color: #fff;
   margin-top: 5rem;
+}
+
+body.login-body {
+  margin-left: 20%;
+  margin-right: 20%;
 }
 
 h1, h2, h3, h4, h5, h6 {
   color: #444444;
 }
 
+/* MEDIA */
+@media only screen and (max-width: 720px) {
+  body.login-body {
+    margin-left: 5%;
+    margin-right: 5%;
+  }
+}
+
+@media (min-width: 768px) {
+  .container {
+      max-width: 900px;
+  }
+  .col-md-8 {
+      max-width: 900px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .container {
+      max-width: 1700px;
+  }
+}
+
 .bg-steel {
-  background-color: #5f788a;
+  background-color: #404249;
+  box-shadow:0px 1px 2px black;
 }
 
 .site-header .navbar-nav .nav-link {
@@ -25,15 +54,19 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .content-section {
-  background: #ffffff;
+  background: #404249;
   padding: 10px 20px;
-  border: 1px solid #dddddd;
+  box-shadow:0px 1px 2px black;
   border-radius: 3px;
   margin-bottom: 20px;
 }
 
+.content-section h3 {
+    color: #fff;
+}
+
 .article-title {
-  color: #444444;
+  color: #fff;
 }
 
 a.article-title:hover {
@@ -43,6 +76,7 @@ a.article-title:hover {
 
 .article-content {
   white-space: pre-line;
+  color: #fff;
 }
 
 .article-img {
@@ -54,7 +88,7 @@ a.article-title:hover {
 .article-metadata {
   padding-bottom: 1px;
   margin-bottom: 4px;
-  border-bottom: 1px solid #e3e3e3
+  border-bottom: 1px solid black
 }
 
 .article-metadata a:hover {
@@ -77,4 +111,21 @@ a.article-title:hover {
 
 .account-heading {
   font-size: 2.5rem;
+  color: #fff;
+}
+
+.list-group-item-light {
+    background-color: #27292F;
+}
+
+.form-control {
+    background-color: #27292F;
+    border: 1px solid black;
+    color: #fff;
+}
+
+.form-control:focus {
+    background-color: inherit;
+    box-shadow: 0 0 0 0.2rem rgba(23,162,185,.25);
+    border-color: black;
 }

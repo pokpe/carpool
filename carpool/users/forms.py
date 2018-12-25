@@ -1,15 +1,15 @@
 from flask_wtf import FlaskForm
 from flask_wtf.file import FileField, FileAllowed
+from wtforms import StringField, PasswordField, SubmitField, BooleanField
+from wtforms.validators import DataRequired, Length, Email, EqualTo, ValidationError
 from flask_login import current_user
-from wtforms import StringField, PasswordField, SubmitField, BooleanField, TextAreaField
-from wtforms.validators import DataRequired, length, Email, EqualTo, ValidationError
 from carpool.models import User
 
 
 class RegistrationForm(FlaskForm):
     username = StringField('Username',
                             validators=[DataRequired(),
-                                        length(min=2, max=20)])
+                                        Length(min=2, max=20)])
     email = StringField('Email',
                         validators=[DataRequired(),
                                     Email()])
@@ -30,6 +30,7 @@ class RegistrationForm(FlaskForm):
         if email:
             raise ValidationError('Account with that email already exist')
 
+
 class LoginForm(FlaskForm):
     email = StringField('Email',
                         validators=[DataRequired(),
@@ -39,10 +40,11 @@ class LoginForm(FlaskForm):
     remember = BooleanField('Remember Me')
     submit = SubmitField('Login')
 
+
 class UpdateAccountForm(FlaskForm):
     username = StringField('Username',
                             validators=[DataRequired(),
-                                        length(min=2, max=20)])
+                                        Length(min=2, max=20)])
     email = StringField('Email',
                         validators=[DataRequired(),
                                     Email()])
@@ -61,10 +63,6 @@ class UpdateAccountForm(FlaskForm):
             if email:
                 raise ValidationError('Account with that email already exist')
 
-class PostForm(FlaskForm):
-    title = StringField('Title', validators=[DataRequired()])
-    content = TextAreaField('Content', validators=[DataRequired()])
-    submit = SubmitField('Post')
 
 class RequestResetForm(FlaskForm):
     email = StringField('Email',
@@ -75,6 +73,7 @@ class RequestResetForm(FlaskForm):
         email = User.query.filter_by(email=email.data).first()
         if email is None:
             raise ValidationError('There is no account with that email. Register first')
+
 
 class ResetPasswordForm(FlaskForm):
     password = PasswordField('Password',
