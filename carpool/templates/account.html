@@ -39,6 +39,32 @@
               {% endif %}
           </div>
           <div class="form-group">
+              {{ form.week_day.label(class="form-control-label") }}
+              {% if form.week_day.errors %}
+                {{ form.week_day(class="form-control form-control-lg is-invalid") }}
+                <div class="invalid-feedback">
+                    {% for error in form.week_day.errors %}
+                        <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+              {% else %}
+                  {{ form.week_day(class="form-control form-control-lg") }}
+              {% endif %}
+          </div>
+          <div class="form-group">
+              {{ form.car_points.label(class="form-control-label") }}
+              {% if form.car_points.errors %}
+                {{ form.car_points(class="form-control form-control-lg is-invalid") }}
+                <div class="invalid-feedback">
+                    {% for error in form.car_points.errors %}
+                        <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+              {% else %}
+                  {{ form.car_points(class="form-control form-control-lg") }}
+              {% endif %}
+          </div>
+          <div class="form-group">
               {{ form.picture.label() }}
               {{ form.picture(class="form-control-file") }}
               {% if form.picture.errors %}

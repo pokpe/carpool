@@ -1,10 +1,11 @@
 from flask_wtf import FlaskForm
 from flask_wtf.file import FileField, FileAllowed
-from wtforms import StringField, PasswordField, SubmitField, BooleanField
+from wtforms import StringField, PasswordField, SubmitField, BooleanField, SelectField
+from wtforms.widgets import Input
 from wtforms.validators import DataRequired, Length, Email, EqualTo, ValidationError
 from flask_login import current_user
 from carpool.models import User
-
+from carpool.settings import Settings
 
 class RegistrationForm(FlaskForm):
     username = StringField('Username',
@@ -40,6 +41,12 @@ class LoginForm(FlaskForm):
     remember = BooleanField('Remember Me')
     submit = SubmitField('Login')
 
+class TextOutput(Input):
+    def __call__(self, field, **kwargs):
+        return kwargs.get('value', field._value())
+
+class ROTextField(StringField):
+    widget = TextOutput()
 
 class UpdateAccountForm(FlaskForm):
     username = StringField('Username',
@@ -48,7 +55,13 @@ class UpdateAccountForm(FlaskForm):
     email = StringField('Email',
                         validators=[DataRequired(),
                                     Email()])
+
+    week_day = SelectField('Drive day', choices=Settings.week_days_array)
+
+    car_points = ROTextField('Drive points')
+
     picture = FileField('Update Profile Picture', validators=[FileAllowed(['jpg', 'png'])])
+
     submit = SubmitField('Update')
 
     def validate_username(self, username):
