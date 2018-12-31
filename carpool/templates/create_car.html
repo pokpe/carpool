@@ -1,0 +1,93 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="content-section">
+    <form method="POST" action="">
+      {{ form.hidden_tag() }}
+      <fieldset class="form-group">
+        <legend class="border-bottom mb-4">{{ legend }}</legend>
+        <div class="form-group">
+            {{ form.car_name.label(class="form-control-label") }}
+            {% if form.car_name.errors %}
+              {{ form.car_name(class="form-control form-control-lg is-invalid") }}
+              <div class="invalid-feedback">
+                  {% for error in form.car_name.errors %}
+                      <span>{{ error }}</span>
+                  {% endfor %}
+              </div>
+            {% else %}
+                {{ form.car_name(class="form-control form-control-lg") }}
+            {% endif %}
+        </div>
+        <div class="form-group">
+            {{ form.member_one.label(class="form-control-label") }}
+            {% if form.member_one.errors %}
+              {{ form.member_one(class="form-control form-control-lg is-invalid") }}
+              <div class="invalid-feedback">
+                  {% for error in form.member_one.errors %}
+                      <span>{{ error }}</span>
+                  {% endfor %}
+              </div>
+            {% else %}
+                {{ form.member_one(class="form-control form-control-lg") }}
+            {% endif %}
+        </div>
+        <div class="form-group">
+            {{ form.member_two.label(class="form-control-label") }}
+            {% if form.member_two.errors %}
+              {{ form.member_two(class="form-control form-control-lg is-invalid") }}
+              <div class="invalid-feedback">
+                  {% for error in form.member_two.errors %}
+                      <span>{{ error }}</span>
+                  {% endfor %}
+              </div>
+            {% else %}
+                {{ form.member_two(class="form-control form-control-lg") }}
+            {% endif %}
+        </div>
+        <div class="form-group">
+            {{ form.member_three.label(class="form-control-label") }}
+            {% if form.member_three.errors %}
+              {{ form.member_three(class="form-control form-control-lg is-invalid") }}
+              <div class="invalid-feedback">
+                  {% for error in form.member_three.errors %}
+                      <span>{{ error }}</span>
+                  {% endfor %}
+              </div>
+            {% else %}
+                {{ form.member_three(class="form-control form-control-lg") }}
+            {% endif %}
+        </div>
+        <div class="form-group">
+            {{ form.member_four.label(class="form-control-label") }}
+            {% if form.member_four.errors %}
+              {{ form.member_four(class="form-control form-control-lg is-invalid") }}
+              <div class="invalid-feedback">
+                  {% for error in form.member_four.errors %}
+                      <span>{{ error }}</span>
+                  {% endfor %}
+              </div>
+            {% else %}
+                {{ form.member_four(class="form-control form-control-lg") }}
+            {% endif %}
+        </div>
+        <div class="form-group">
+            {{ form.member_five.label(class="form-control-label") }}
+            {% if form.member_five.errors %}
+              {{ form.member_five(class="form-control form-control-lg is-invalid") }}
+              <div class="invalid-feedback">
+                  {% for error in form.member_five.errors %}
+                      <span>{{ error }}</span>
+                  {% endfor %}
+              </div>
+            {% else %}
+                {{ form.member_five(class="form-control form-control-lg") }}
+            {% endif %}
+        </div>
+
+      </fieldset>
+      <div class="form-group">
+          {{ form.submit(class="btn btn-outline-info") }}
+      </div>
+    </form>
+</div>
+{% endblock content %}

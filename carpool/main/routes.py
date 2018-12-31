@@ -1,6 +1,6 @@
 from flask import render_template, request, Blueprint, redirect, url_for
 from flask_login import current_user
-from carpool.models import Post
+from carpool.models import Car, User
 
 main = Blueprint('main', __name__)
 
@@ -12,8 +12,16 @@ def check_valid_login():
 @main.route("/home")
 @main.route("/")
 def home():
-    posts = Post.query.all()
-    return render_template('home.html', posts=posts)
+    cars = Car.query.all()
+
+    for car in cars:
+        car.user_one = User.query.filter_by(id=car.member_one).first()
+        car.user_two = User.query.filter_by(id=car.member_two).first()
+        car.user_three = User.query.filter_by(id=car.member_three).first()
+        car.user_four = User.query.filter_by(id=car.member_four).first()
+        car.user_five = User.query.filter_by(id=car.member_five).first()
+
+    return render_template('home.html', cars=cars)
 
 @main.route("/about")
 def about():

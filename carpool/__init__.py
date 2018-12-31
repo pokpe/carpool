@@ -26,10 +26,12 @@ def create_app(config_class=Config):
     from carpool.main.routes import main
     from carpool.users.routes import users
     from carpool.posts.routes import posts
+    from carpool.cars.routes import cars
     from carpool.errors.handlers import errors
     app.register_blueprint(main)
     app.register_blueprint(users)
     app.register_blueprint(posts)
+    app.register_blueprint(cars)
     app.register_blueprint(errors)
 
     return app

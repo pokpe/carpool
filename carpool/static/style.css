@@ -4,11 +4,6 @@ body {
   margin-top: 5rem;
 }
 
-body.login-body {
-  margin-left: 20%;
-  margin-right: 20%;
-}
-
 h1, h2, h3, h4, h5, h6 {
   color: #444444;
 }
@@ -28,11 +23,19 @@ h1, h2, h3, h4, h5, h6 {
   .col-md-8 {
       max-width: 900px;
   }
+  body.login-body {
+    margin-left: 20%;
+    margin-right: 20%;
+  }
 }
 
 @media (min-width: 1200px) {
   .container {
       max-width: 1700px;
+  }
+  body.login-body {
+    margin-left: 37%;
+    margin-right: 37%;
   }
 }
 

@@ -16,10 +16,7 @@ class User(db.Model, UserMixin):
     image_file = db.Column(db.String(20), nullable=False, default='default.jpg')
     password = db.Column(db.String(60), nullable=False)
     active = db.Column(db.Boolean(), nullable=False, default=False)
-    week_day = db.Column(db.Integer, nullable=False, default=1)
-    car_points = db.Column(db.Integer, nullable=False, default=0)
     posts = db.relationship('Post', backref='author', lazy=True)
-    # Flytta poäng från användaren till grupp member
 
     def get_reset_token(self, expires_sec=1800):
         s = Serializer(current_app.config['SECRET_KEY'], expires_sec)
@@ -54,24 +51,24 @@ class Car(db.Model):
 
     car_name = db.Column(db.String(100), nullable=False)
 
-    member_one = db.Column(db.Integer, nullable=False, unique=True)
-    member_two = db.Column(db.Integer, nullable=True, unique=True)
-    member_tree = db.Column(db.Integer, nullable=True, unique=True)
-    member_four = db.Column(db.Integer, nullable=True, unique=True)
-    member_five = db.Column(db.Integer, nullable=True, unique=True)
+    member_one = db.Column(db.Integer, nullable=False)
+    member_two = db.Column(db.Integer, nullable=True)
+    member_three = db.Column(db.Integer, nullable=True)
+    member_four = db.Column(db.Integer, nullable=True)
+    member_five = db.Column(db.Integer, nullable=True)
 
     week_day_one = db.Column(db.Integer, nullable=True)
     week_day_two = db.Column(db.Integer, nullable=True)
-    week_day_tree = db.Column(db.Integer, nullable=True)
+    week_day_three = db.Column(db.Integer, nullable=True)
     week_day_four = db.Column(db.Integer, nullable=True)
     week_day_five = db.Column(db.Integer, nullable=True)
 
-    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+    # user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
 
     def __repr__(self):
         return "Car('{}, {}, {}, {}, {}, {}')".format(self.car_name,
                                                       self.member_one,
                                                       self.member_two,
-                                                      self.member_tree,
+                                                      self.member_three,
                                                       self.member_four,
                                                       self.member_five)
